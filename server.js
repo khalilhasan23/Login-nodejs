@@ -33,4 +33,12 @@ app.get("/", (req,res)=>{
     res.render("base",{title:"Login"});
 })
 
+router.get("/dashbord",(req,res)=>{
+    if (req.session.user) {
+        res.render("dashbord",{user:req.session.user})
+    }else{
+        res.send("Unauthorize User")
+    }
+})
+
 app.listen(port,()=>{console.log("lostening to the server on http://localhost:3000")})
